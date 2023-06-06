@@ -1,7 +1,12 @@
 package com.JunitTest.SpringSupport.Models;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class CollegeStudent implements Student {
-    private String firstname;
+   
+	@Value("Arpita")
+	private String firstname;
+	@Value("#{new java.lang.String('Biswas')}")
     private String lastname;
     private String emailAddress;
     private StudentGrades studentGrades;

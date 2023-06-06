@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Scope;
 import com.JunitTest.Mockito.Dao.ApplicationDao;
 import com.JunitTest.Mockito.Service.ApplicationService;
 import com.JunitTest.SpringSupport.Models.CollegeStudent;
-import com.JunitTest.SpringSupport.Models.MvcTestingExampleApplication;
+
 
 @SpringBootApplication
 public class MvcTestingExampleApplicationtwo{
