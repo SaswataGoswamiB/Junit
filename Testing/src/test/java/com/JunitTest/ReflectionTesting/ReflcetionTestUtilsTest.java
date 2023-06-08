@@ -18,7 +18,7 @@ import com.JunitTest.TestingApplication;
 
 @SpringBootTest(classes =TestingApplication.class )
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class RfelcetionTestUtilsTest {
+public class ReflcetionTestUtilsTest {
 
 	@Autowired
 	ApplicationContext applicationContext;
