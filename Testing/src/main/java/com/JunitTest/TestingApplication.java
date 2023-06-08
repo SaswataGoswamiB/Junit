@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
+import com.JunitTest.ReflectionTesting.CollegeStudent2;
 import com.JunitTest.SpringSupport.Models.CollegeStudent;
 
 @SpringBootApplication
@@ -23,6 +24,14 @@ public class TestingApplication {
 		
 		System.out.println("This method ran for creating Bean!!");
 		return new CollegeStudent();
+	}
+	
+	@Bean(name = "collegeStudent2")
+	@Scope(value = "prototype")
+	CollegeStudent2 getCollegeStudent2() {
+		
+		System.out.println("This method ran for creating Bean!!");
+		return new CollegeStudent2();
 	}
 
 }
