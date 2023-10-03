@@ -1,5 +1,7 @@
 package com.JunitTest.GradeBook.Models;
 
+
+
 import jakarta.persistence.*;
 
 
@@ -7,7 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "student")
 public class CollegeStudent implements Student {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    //@GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     @Column
     private String firstname;
@@ -20,7 +22,19 @@ public class CollegeStudent implements Student {
 
     }
 
-    public CollegeStudent(String firstname, String lastname, String emailAddress) {
+    
+    
+    public CollegeStudent(int id, String firstname, String lastname, String emailAddress) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.emailAddress = emailAddress;
+	}
+
+
+
+	public CollegeStudent(String firstname, String lastname, String emailAddress) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.emailAddress = emailAddress;

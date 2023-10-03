@@ -1,0 +1,5 @@
+insert into student(id,firstname,lastname,email_address) values(11,'Student','one','one@gmailcom')
+insert into student(id,firstname,lastname,email_address) values(12,'Student','two','one@gmailcom')
+insert into student(id,firstname,lastname,email_address) values(13,'Student','three','one@gmailcom')
+insert into student(id,firstname,lastname,email_address) values(14,'Student','four','one@gmailcom')
+insert into student(id,firstname,lastname,email_address) values(15,'Student','five','one@gmailcom')

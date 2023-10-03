@@ -1,4 +1,4 @@
-package com.JunitTest.DemoTest;
+ package com.JunitTest.DemoTest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +18,8 @@ import com.JunitTest.Arrays.Testarr;
 //Order by method name.
 //@TestMethodOrder(MethodOrderer.MethodName.class)
 //@TestMethodOrder(MethodOrderer.Random.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class) 
 public class TestArray {
 
 	Testarr testarr;
@@ -26,7 +27,7 @@ public class TestArray {
 	void initial() 
 	{
 		testarr=new Testarr();
-	}
+	} 
 	
 	@Test
 	@Order(1)
@@ -52,7 +53,8 @@ public class TestArray {
 	@DisplayName("Tetsing Exception!")
 	void TestExcp() 
 	{
-		Assertions.assertThrows(Exception.class,()->testarr.ExceptionA(-1),"Should throw exception!");
-		Assertions.assertDoesNotThrow(()->testarr.ExceptionA(9),"houldnot Throw exception! ");
+		//Assertions.assertThrows(Exception.class,()->testarr.ExceptionA(-1),"Should throw exception!");
+		Assertions.assertThrows(Exception.class,()->testarr.ExceptionA(-1),"should thrpw excption");
+		Assertions.assertDoesNotThrow(()->testarr.ExceptionA(9),"shouldnot Throw exception! ");
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.env.Environment;
 
 import com.JunitTest.TestingApplication;
 import com.JunitTest.Mockito.Dao.ApplicationDao;
@@ -27,6 +28,9 @@ import com.JunitTest.SpringSupport.Models.StudentGrades;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MockAnnotationTest {
 
+	@Autowired
+	Environment environment;
+	
 	@Autowired
 	ApplicationContext applicationContext;
 
@@ -69,6 +73,8 @@ public class MockAnnotationTest {
 		collegeStudent.setLastname("Goswami");
 		collegeStudent.setEmailAddress("saswatas02091998@gmail.com");
 		collegeStudent.setStudentGrades(studentGradestwoGrades);
+		
+		environment.getProperty("xcr");
 	}
 
 	@DisplayName("When and Verify")
@@ -93,7 +99,7 @@ public class MockAnnotationTest {
 	@Order(1)
 	public void Exception() {
 
-		CollegeStudent collegeStudent1 = applicationContext.getBean("collegeStudent", CollegeStudent.class);
+		CollegeStudent collegeStudent1 = applicationContext.getBean("collegestudent", CollegeStudent.class);
 
 		//Here what willl happen is that for the first call to the applicationDao.checknull() method
 		// we will get an exception and 
@@ -111,9 +117,9 @@ public class MockAnnotationTest {
 	@Order(3)
 	public void Findit() {
 		
-		CollegeStudent collegeStudent1 = applicationContext.getBean("collegeStudent", CollegeStudent.class);
+		//CollegeStudent collegeStudent1 = applicationContext.getBean("collegestudent", CollegeStudent.class);
 
-		System.out.println("The First name from Context is " + collegeStudent1.getFirstname());
+		System.out.println("The First name from Context is " + collegeStudent.getFirstname());
 
 		System.out.println("The First name from the Before call is " + collegeStudent.getFirstname());
 	}
