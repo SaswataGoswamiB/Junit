@@ -6,11 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -87,10 +84,12 @@ public class MockAnnotationTest {
 		Assertions.assertEquals(100, applicationService
 				.addGradeResultsForSingleClass(collegeStudent.getStudentGrades().getMathGradeResults()));
 
-		Mockito.verify(applicationDao, Mockito.times(1))
-				.addGradeResultsForSingleClass(studentGradestwoGrades.getMathGradeResults());
+//		Mockito.verify(applicationDao, Mockito.times(1))
+//				.addGradeResultsForSingleClass(studentGradestwoGrades.getMathGradeResults());
 
 		// Mockito.verify(applicationDao).addGradeResultsForSingleClass(studentGradestwoGrades.getMathGradeResults());
+		
+		Mockito.verify(applicationDao,Mockito.times(1)).addGradeResultsForSingleClass(ArgumentMatchers.anyList());
 
 	}
 

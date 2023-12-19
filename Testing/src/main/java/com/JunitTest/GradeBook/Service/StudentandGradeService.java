@@ -17,16 +17,13 @@ public class StudentandGradeService {
 
 	@Autowired
 	private StudentDao studentDao;
-	
 
-	
-
-	public CollegeStudent CreateStudent(String firstnameString, String middlename, String lastname,Integer id) {
+	public CollegeStudent CreateStudent(String firstnameString, String middlename, String lastname, Integer id) {
 
 		CollegeStudent collegeStudent = new CollegeStudent(firstnameString, middlename, lastname);
 		collegeStudent.setId(id);
 		// studentDao.save(collegeStudent);
-		 return studentDao.save(collegeStudent);
+		return studentDao.save(collegeStudent);
 
 	}
 
@@ -34,8 +31,8 @@ public class StudentandGradeService {
 		// TODO Auto-generated method stub
 
 		Optional<CollegeStudent> studentOptional = studentDao.findById(id);
-		
-		//System.out.println(studentOptional.get().getEmailAddress());
+
+		// System.out.println(studentOptional.get().getEmailAddress());
 		if (studentOptional.isPresent()) {
 			return true;
 		}
@@ -46,8 +43,8 @@ public class StudentandGradeService {
 
 	public Iterable<CollegeStudent> getgradebook() {
 		// TODO Auto-generated method stub
-			
-		Iterable<CollegeStudent> collegeStudents=studentDao.findAll();
+
+		Iterable<CollegeStudent> collegeStudents = studentDao.findAll();
 		return collegeStudents;
 	}
 

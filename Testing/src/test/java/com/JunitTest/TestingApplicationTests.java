@@ -59,7 +59,7 @@ class TestingApplicationTests {
 	}
 	
 	@Test
-	@DisplayName("Adding up the grades of it!")
+	@DisplayName("Adding up the grades of it!")  
 	public void addGrades() 
 	{
 		Assertions.assertEquals(334,

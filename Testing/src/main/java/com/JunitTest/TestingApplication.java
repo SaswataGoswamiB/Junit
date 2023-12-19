@@ -1,10 +1,15 @@
 package com.JunitTest;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
+import com.JunitTest.GradeBook.Models.Grade;
+import com.JunitTest.GradeBook.Models.HistoryGrade;
+import com.JunitTest.GradeBook.Models.MathGrade;
+import com.JunitTest.GradeBook.Models.ScienceGrade;
 import com.JunitTest.ReflectionTesting.CollegeStudent2;
 import com.JunitTest.SpringSupport.Models.CollegeStudent;
 
@@ -18,20 +23,40 @@ public class TestingApplication {
 	}
 	
 	
-	@Bean(name = "collegeStudent")
+	@Bean
 	@Scope(value = "prototype")
 	CollegeStudent getCollegeStudent() {
-		
-		System.out.println("This method ran for creating Bean!!");
 		return new CollegeStudent();
 	}
-	
-	@Bean(name = "collegeStudent2")
+
+	@Bean
 	@Scope(value = "prototype")
-	CollegeStudent2 getCollegeStudent2() {
-		
-		System.out.println("This method ran for creating Bean!!");
-		return new CollegeStudent2();
+	Grade getMathGrade(double grade) {
+		return new MathGrade(grade);
 	}
 
-}
+	@Bean
+	@Scope(value = "prototype")
+	@Qualifier("mathGrades")
+	MathGrade getGrade() {
+		return new MathGrade();
+	}
+
+	@Bean
+	@Scope(value = "prototype")
+	@Qualifier("scienceGrades")
+	ScienceGrade getScienceGrade() {
+		return new ScienceGrade();
+	}
+
+	@Bean
+	@Scope(value = "prototype")
+	@Qualifier("historyGrades")
+	HistoryGrade getHistoryGrade() {
+		return new HistoryGrade();
+	}
+
+
+	}
+
+

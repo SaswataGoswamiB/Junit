@@ -2,6 +2,9 @@ package com.JunitTest.GradeBook.Models;
 
 
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.*;
 
 

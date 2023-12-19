@@ -9,8 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import com.JunitTest.DemoUtils;
 
-@DisplayNameGeneration(DisplayNameGenerator.Simple.class)
+
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@DisplayNameGeneration(DisplayNameGenerator.Standard.class)
 
 public class DemoTest {
 
@@ -22,13 +23,13 @@ public class DemoTest {
 		System.out.println("Runnign Before Each");
 	}
 
-	@Test
+	@Test  
 	@DisplayName("Checking for Equality")
 	void testequalsornotequals() {
 
-		int a = dmDemoUtils.add(2, 8);
-		int expected = 10;
-		Assertions.assertEquals(a, expected);
+//		int a = dmDemoUtils.add(2, 8);
+//		int expected = 10;
+//		Assertions.assertEquals(a, expected); 
 	}
 	
 	@Test

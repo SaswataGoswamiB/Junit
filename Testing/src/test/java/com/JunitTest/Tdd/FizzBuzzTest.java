@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -60,6 +61,7 @@ public class FizzBuzzTest {
 	@ParameterizedTest(name = "value={0},expected={1}")
 	@DisplayName("Testuing with CSV data.")
 	@CsvSource({ "1,1", "2,2", "3,Fizz", "5,Buzz", "15,FizzBuzz" })
+	
 	void testCsvDatatwo(int a, String expected) {
 		Assertions.assertEquals(expected, FizzBuzz.compute(a));
 
