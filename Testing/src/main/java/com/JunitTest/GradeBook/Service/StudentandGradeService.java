@@ -18,9 +18,9 @@ public class StudentandGradeService {
 	@Autowired
 	private StudentDao studentDao;
 
-	public CollegeStudent CreateStudent(String firstnameString, String middlename, String lastname, Integer id) {
+	public CollegeStudent CreateStudent(String firstnameString, String Lastname, String email, Integer id) {
 
-		CollegeStudent collegeStudent = new CollegeStudent(firstnameString, middlename, lastname);
+		CollegeStudent collegeStudent = new CollegeStudent(firstnameString, Lastname, email);
 		collegeStudent.setId(id);
 		// studentDao.save(collegeStudent);
 		return studentDao.save(collegeStudent);

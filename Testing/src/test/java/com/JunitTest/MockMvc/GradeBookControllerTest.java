@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -26,11 +24,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.JunitTest.TestingApplication;
 import com.JunitTest.GradeBook.MvcTestingExampleApplication;
-import com.JunitTest.GradeBook.Controller.GradebookController;
 import com.JunitTest.GradeBook.Models.CollegeStudent;
 import com.JunitTest.GradeBook.Models.GradebookCollegeStudent;
+import com.JunitTest.GradeBook.Repo.StudentDao;
 import com.JunitTest.GradeBook.Service.StudentandGradeService;
 
 //@PropertySource("/application.properties")
@@ -48,6 +45,9 @@ public class GradeBookControllerTest {
 	
 	@Mock   
 	private StudentandGradeService studentandGradeService; 
+	
+	@Autowired
+	private StudentDao studentDao;
 	
 	@BeforeAll
 	//alll the fields inside Beforeall has to be static.
@@ -105,6 +105,27 @@ public class GradeBookControllerTest {
 		ModelAndViewAssert.assertViewName(modelAndView,"index");
 		
 	}
+	
+	@Test
+	public void deleteStudent() throws Exception
+	{
+		
+		Assertions.assertTrue(studentDao.findById(1).isPresent());
+		
+		MvcResult mvcResult=mockmvc.perform(MockMvcRequestBuilders.get("/delete/student/{id}")).
+				andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+		
+		ModelAndView modelAndView=mvcResult.getModelAndView();
+		
+		ModelAndViewAssert.assertViewName(modelAndView,"index");
+	}
+	
+	@AfterEach
+	public void after() 
+	{
+		jdbcTemplate.execute("DELETE FROM student");
+	}
+
 		
 	}
 

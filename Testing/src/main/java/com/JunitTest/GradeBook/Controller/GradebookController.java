@@ -3,10 +3,7 @@ package com.JunitTest.GradeBook.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import com.JunitTest.GradeBook.Models.CollegeStudent;
 import com.JunitTest.GradeBook.Models.Gradebook;
@@ -40,4 +37,23 @@ public class GradebookController {
 		return "studentInformation";
 		}
 
+
+		@PostMapping(value="/")
+		public String createStudent(@ModelAttribute("student") CollegeStudent collegestudent,Model model)
+		{
+			
+			studentandGradeService.
+			CreateStudent(collegestudent.getFirstname(),collegestudent.getLastname(),collegestudent.getEmailAddress(),collegestudent.getId());
+			Iterable<CollegeStudent> collegestudentIterable=studentandGradeService.getgradebook();
+			model.addAttribute("students", collegestudentIterable);
+			return "index";
+		}
+		
+		@GetMapping("/delete/student/{id}")
+		public String studentinformation(@PathVariable int id,Model model) 
+		{
+			
+			
+			return "studentinformation";
+		}
 }
